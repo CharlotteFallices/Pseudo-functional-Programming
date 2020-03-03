@@ -4,17 +4,37 @@ A mode of programming / 一个不成熟的设计模式
 先上一段代码:
 ```swift
 public struct MakeLove{
-  public var song:Song?
-  public func inputSong(songIn:Song){
+  public var song:Song?//被添加的歌曲
+  public var user:User?//用户的收藏歌单
+  public func input(songIn:Song,userIn:User){
     song=songIn
+    user=userIn
   }
   public func makeLove(){
     song.love=true
+  }
+  public logival/*逻辑判断单位*/ func isInLoving(){
+    for i in 0..user.loving.length{
+    //如果歌曲已经在Loving歌单内
+      if user.loving[i].name==song.name{
+        break
+      }else{
+        addToLoving()
+      }
+    }
+  }
+  public func addToLoving(){
+    user.loving[user.loving.length]=song
   }
   public func outputSong()->Song{
     var tempSong=song
     song=nil
     return tempSong
+  }
+  public func outputUser()->User{
+    var tempUser=user
+    user=nil
+    return tempUser
   }
 }
 ```
